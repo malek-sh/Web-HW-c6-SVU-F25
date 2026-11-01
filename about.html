@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن الدليل | دليل فعاليات الجامعة الافتراضية السورية</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+          rel="stylesheet">
+
+    <!-- ربط ملف الـ CSS الخارجي -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <style>
+        .hero-about {
+            background: var(--hero-bg);
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hero-about h1 {
+            color: #7c3aed;
+            font-weight: bold;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            height: 100%;
+        }
+
+        .section-title {
+            color: #7c3aed;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .team-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 35px 20px;
+            border-radius: 15px;
+        }
+
+        .team-img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 3px solid #7c3aed;
+        }
+
+        .team-card {
+            background-color: var(--card-bg) !important;
+            color: var(--text-color) !important;
+            border: 1px solid var(--border-color) !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.2) !important;
+        }
+
+        .role-badge {
+            background-color: #6d28d9;
+            color: white;
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .role-desc {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        .policy-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+
+        .policy-card:hover {
+            transform: translateX(-5px);
+        }
+
+        .policy-title {
+            color: #7c3aed;
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .btn-outline-custom {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            font-weight: bold;
+            padding: 10px 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: #7c3aed;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- رأس الصفحة وشريط التنقل مع زر الوضع الليلي -->
+    <header>
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div class="logo">🎓 دليل الفعاليات الجامعية</div>
+                
+                <div class="d-flex align-items-center">
+                    <nav class="navbar">
+                        <a href="index.html">الرئيسية</a>
+                        <a href="events.html">كل الفعاليات</a>
+                        <a href="event.html?id=knowledge">تفاصيل الفعالية</a>
+                        <a href="about.html" aria-current="page">عن الدليل</a>
+                        <a href="contact.html">اتصل بنا</a>
+                    </nav>
+                    <!-- زر الوضع الليلي -->
+                    <button class="dark-mode-btn" id="darkModeToggle" title="تغيير الوضع المظلم">
+                        🌙
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- مقدمة صفحة عن الدليل -->
+        <section class="hero-about">
+            <div class="container">
+                <span class="badge text-bg-light mb-3">الجامعة الافتراضية السورية</span>
+                <h1>عن دليل الفعاليات الجامعية</h1>
+                <p class="mt-3 fs-5">
+                    منصتك الطلابية الأولى لاكتشاف ومتابعة كافة الأنشطة والفعاليات الأكاديمية والثقافية.
+                </p>
+            </div>
+        </section>
+
+        <!-- المحتوى التعريفي -->
+        <section class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h2 class="section-title">🎯 هدف الدليل ورؤيته</h2>
+                        <p>
+                            جاء إنشاء هذا الموقع ليكون حلقة وصل حقيقية وفعّالة بين طلاب الجامعة الافتراضية السورية (SVU). 
+                            رؤيتنا هي بناء مجتمع طلابي تفاعلي يجمع كافة الأنشطة والورشات التعليمية في مكان واحد ميسر.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="content-card">
+                        <h2 class="section-title">💡 رسالتنا للمجتمع الجامعي</h2>
+                        <p>
+                            نؤمن بأن الحياة الجامعية لا تقتصر فقط على المحاضرات، بل تعد الأنشطة اللامنهجية ركيزة أساسية 
+                            لبناء شخصية هندسية ومهنية متكاملة، ونشر المعرفة، وخلق بيئة تفاعلية آمنة لجميع الطلاب.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم فريق العمل -->
+        <section class="container pb-5">
+            <div class="team-section text-center">
+                <h2 class="section-title">فريق العمل والشركاء</h2>
+                <p class="mb-4 text-muted">
+                    أُنجز هذا المشروع ضمن متطلبات مقررات مادة برمجة الويب 1 في الجامعة الافتراضية السورية.
+                </p>
+
+                <div class="row justify-content-center g-4">
+                    
+                    <!-- ريم -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card p-3 h-100 border-0 shadow-sm text-center d-flex flex-column team-card">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" 
+                                 class="team-img mx-auto" alt="صورة ريم">
+                            <h3 class="h6 fw-bold mb-1">ريم</h3>
+                            <p class="text-muted small mb-1">reem_366874</p>
+                            <p class="text-secondary small mb-2">الرقم الجامعي: 366874</p>
+                            <div class="mt-auto">
+                                <div class="role-badge">مشرفة الفريق ومطورة الواجهات</div>
+                                <div class="role-desc">مسؤولة عن هيكلة صفحات HTML وتنسيق تجربة المستخدم</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- مارية -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card p-3 h-100 border-0 shadow-sm text-center d-flex flex-column team-card">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" 
+                                 class="team-img mx-auto" alt="صورة مارية">
+                            <h3 class="h6 fw-bold mb-1">مارية</h3>
+                            <p class="text-muted small mb-1">maryah_371855</p>
+                            <p class="text-secondary small mb-2">الرقم الجامعي: 371855</p>
+                            <div class="mt-auto">
+                                <div class="role-badge">مصممة CSS و Bootstrap</div>
+                                <div class="role-desc">مسؤولة عن التصميم المتجاوب وتنسيق الألوان والوضع الليلي</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- مالك -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card p-3 h-100 border-0 shadow-sm text-center d-flex flex-column team-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" 
+                                 class="team-img mx-auto" alt="صورة مالك">
+                            <h3 class="h6 fw-bold mb-1">مالك</h3>
+                            <p class="text-muted small mb-1">Malek_407636</p>
+                            <p class="text-secondary small mb-2">الرقم الجامعي: 407636</p>
+                            <div class="mt-auto">
+                                <div class="role-badge">منسق الشركاء والفعاليات</div>
+                                <div class="role-desc">مسؤول عن مراجعة بيانات الفعاليات والتنسيق مع المراكز الثقافية</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- زينب -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card p-3 h-100 border-0 shadow-sm text-center d-flex flex-column team-card">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" 
+                                 class="team-img mx-auto" alt="صورة زينب">
+                            <h3 class="h6 fw-bold mb-1">زينب</h3>
+                            <p class="text-muted small mb-1">zainah_343224</p>
+                            <p class="text-secondary small mb-2">الرقم الجامعي: 343224</p>
+                            <div class="mt-auto">
+                                <div class="role-badge">مطورة JavaScript</div>
+                                <div class="role-desc">مسؤولة عن برمجة الفلترة والتحقق من النماذج وحفظ التفضيلات</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- سياسات تقديم الفعاليات ومعايير النشر -->
+        <section class="container pb-5">
+            <h2 class="section-title text-center mb-4">سياسات تقديم الفعاليات ومعايير النشر</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    
+                    <div class="policy-card">
+                        <h3 class="policy-title">📋 1. الفائدة الطلابية</h3>
+                        <p class="text-muted mb-0">يشترط أن تكون الفعالية المقدمة ذات هدف علمي، ثقافي، رياضي، أو اجتماعي يخدم طلاب الجامعة الافتراضية.</p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h3 class="policy-title">🕒 2. موعد التقديم المسبق</h3>
+                        <p class="text-muted mb-0">يتم إرسال طلب إضافة الفعالية عبر نموذج "اتصل بنا" قبل 7 أيام على الأقل من تاريخ إقامتها لمراجعتها.</p>
+                    </div>
+
+                    <div class="policy-card">
+                        <h3 class="policy-title">📍 3. وضوح المعلومات</h3>
+                        <p class="text-muted mb-0">يجب إرفاق عنوان واضح، تصنيف دقيق، تحديد المحافظة والمركز، ووصف مختصر لأهداف النشاط.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- زر العودة للرئيسية -->
+        <div class="text-center pb-5">
+            <a href="index.html" class="btn-outline-custom">
+                العودة إلى الصفحة الرئيسية
+            </a>
+        </div>
+
+    </main>
+
+    <!-- التذييل -->
+    <footer>
+        <h5 class="fw-bold mb-2">🎓 دليل فعاليات الجامعة الافتراضية السورية</h5>
+        <p class="small text-white-50 mb-3">جميع الحقوق محفوظة © 2026 - مشروع مقرر BWP401</p>
+        
+        <div class="social-icons mb-3">
+            <a href="#" title="LinkedIn">in</a>
+            <a href="#" title="Telegram">✈</a>
+            <a href="#" title="Facebook">f</a>
+        </div>
+
+        <p class="mb-0 small">
+            <a href="mailto:events@svuonline.org">events@svuonline.org</a> ✉
+        </p>
+    </footer>
+
+    <!-- زر السهم العائم للعودة للأعلى -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="العودة للأعلى">
+        ↑
+    </button>
+
+    <!-- ربط ملف الـ JS الخارجي -->
+    <script src="assets/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
