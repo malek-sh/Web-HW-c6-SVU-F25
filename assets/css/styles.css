@@ -1,18 +1,26 @@
-/* الألوان الأساسية والمتغيرات */
+/* استيراد خط Cairo من Google Fonts لتلبية متطلبات الخطوط الواضحة */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+/* الألوان الأساسية والمتغيرات (الوضع الفاتح) */
 :root {
     --bg-color: #f5f3ff;
     --text-color: #252044;
+    --muted-color: #64748b;
     --card-bg: #ffffff;
     --header-bg: linear-gradient(135deg, #4c1d95, #7c3aed);
     --footer-bg: #1e1b4b;
     --hero-bg: linear-gradient(135deg, #ede9fe, #ddd6fe);
     --border-color: #e9d5ff;
     --input-bg: #ffffff;
+    --primary-purple: #7c3aed;
+    --hover-purple: #5b21b6;
 }
 
+/* متغيرات الوضع المظلم (Dark Mode - Bonus) */
 body.dark-mode {
     --bg-color: #0f172a;
     --text-color: #f8fafc;
+    --muted-color: #94a3b8;
     --card-bg: #1e293b;
     --header-bg: linear-gradient(135deg, #090d16, #1e1b4b);
     --footer-bg: #090d16;
@@ -22,23 +30,48 @@ body.dark-mode {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Cairo', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.text-muted {
+    color: var(--muted-color) !important;
+}
+
+/* رأس الصفحة وشريط التنقل */
 header {
     background: var(--header-bg);
     color: white;
-    padding: 22px 0;
+    padding: 18px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-.logo { font-size: 25px; font-weight: bold; }
-.navbar a { color: white; text-decoration: none; margin: 8px; }
-.navbar a:hover { text-decoration: underline; }
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
 
+.navbar a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    margin: 6px 10px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.navbar a:hover,
+.navbar a[aria-current="page"] {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+/* زر الوضع الليلي */
 .dark-mode-btn {
     background: rgba(255, 255, 255, 0.2);
     border: none;
@@ -47,22 +80,82 @@ header {
     border-radius: 50px;
     cursor: pointer;
     font-size: 16px;
-    margin-right: 15px;
+    margin-right: 12px;
+    transition: background 0.2s;
 }
 
-.event-header {
-    background: var(--hero-bg);
-    padding: 40px 20px;
+.dark-mode-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* أقسام الترحيب (Hero Sections) */
+.hero, .hero-about, .hero-contact, .event-header {
+    padding: 55px 20px;
     text-align: center;
+    background: var(--hero-bg);
 }
 
-.event-header h1 { color: #7c3aed; font-weight: bold; }
+.hero h1, .hero-about h1, .hero-contact h1, .event-header h1,
+.section-title, .page-title, .event-title {
+    color: var(--primary-purple);
+    font-weight: 700;
+}
 
+/* الكروت والصناديق */
+.event-card, .info-card, .filter-box, .content-card, .contact-card, .info-box, .team-section, .policy-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.event-card {
+    overflow: hidden;
+    height: 100%;
+}
+
+.event-card:hover, .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.18);
+}
+
+.info-card, .content-card, .contact-card, .info-box {
+    padding: 25px;
+    height: 100%;
+}
+
+.filter-box {
+    padding: 20px;
+}
+
+/* الصور والسلايدر */
 .event-image {
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+}
+
+.event-detail-image {
     width: 100%;
     height: 350px;
     object-fit: cover;
     border-radius: 15px;
+}
+
+.carousel-item img {
+    height: 360px;
+    object-fit: cover;
+    border-radius: 15px;
+    filter: brightness(0.65);
+}
+
+.carousel-caption {
+    background: rgba(15, 23, 42, 0.75);
+    border-radius: 12px;
+    padding: 20px;
+    bottom: 25px;
 }
 
 .gallery-img {
@@ -73,27 +166,74 @@ header {
     border: 1px solid var(--border-color);
 }
 
-.info-card, .event-card, .filter-box {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+.map-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
 }
 
-.section-title, .page-title, .event-title { color: #7c3aed; font-weight: bold; }
-
+/* الأزرار والشارات */
 .btn-purple {
     background-color: #6d28d9;
     color: white;
     border-radius: 8px;
+    text-decoration: none;
     border: none;
+    padding: 8px 18px;
+    font-weight: 600;
+    display: inline-block;
+    transition: background 0.2s;
 }
-.btn-purple:hover { background-color: #4c1d95; color: white; }
+.btn-purple:hover {
+    background-color: #4c1d95;
+    color: white;
+}
 
-.map-image { width: 100%; border-radius: 12px; margin-top: 10px; }
+.event-badge {
+    background-color: var(--primary-purple);
+    color: white;
+}
 
+.category-btn {
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--primary-purple);
+    padding: 10px 22px;
+    border-radius: 25px;
+    margin: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background-color: var(--primary-purple);
+    color: white;
+}
+
+/* حقول الإدخال والـ Modal */
+.form-control, .form-select {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.25);
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+}
+
+/* التذييل */
 footer {
     background-color: var(--footer-bg);
     color: white;
@@ -101,8 +241,32 @@ footer {
     padding: 40px 20px;
     margin-top: 50px;
 }
-footer a { color: #ddd6fe; text-decoration: none; margin: 0 10px; }
 
+footer a {
+    color: #ddd6fe;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    color: white;
+    margin: 0 5px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.social-icons a:hover {
+    background: var(--primary-purple);
+}
+
+/* زر الصعود للأعلى (Bonus) */
 .scroll-top-btn {
     position: fixed;
     bottom: 20px;
@@ -115,9 +279,39 @@ footer a { color: #ddd6fe; text-decoration: none; margin: 0 10px; }
     border-radius: 12px;
     font-size: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    transition: transform 0.2s;
+}
+
+.scroll-top-btn:hover {
+    transform: scale(1.1);
+}
+
+.event-item[hidden] {
+    display: none !important;
+}
+
+
+/* شعار الجامعة الافتراضية السورية */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.university-logo {
+    height: 82px;
+    width: auto;
+    max-width: 90px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 6px;
+}
+@media (max-width: 768px) {
+    .university-logo {
+        height: 68px;
+    }
 }

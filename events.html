@@ -1,231 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كل الفعاليات | دليل فعاليات الجامعة الافتراضية السورية</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-
-    <style>
-        /* الألوان الافتراضية (الوضع الفاتح) */
-        :root {
-            --bg-color: #f5f3ff;
-            --text-color: #252044;
-            --card-bg: #ffffff;
-            --header-bg: linear-gradient(135deg, #4c1d95, #7c3aed);
-            --footer-bg: #1e1b4b;
-            --border-color: #e9d5ff;
-        }
-
-        /* ألوان الوضع المظلم (Dark Mode) */
-        body.dark-mode {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --card-bg: #1e293b;
-            --header-bg: linear-gradient(135deg, #090d16, #1e1b4b);
-            --footer-bg: #090d16;
-            --border-color: #334155;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        header {
-            background: var(--header-bg);
-            color: white;
-            padding: 22px 0;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 8px;
-        }
-
-        .navbar a:hover {
-            text-decoration: underline;
-        }
-
-        /* زر الوضع الليلي في الرأس */
-        .dark-mode-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 15px;
-            transition: background 0.2s;
-        }
-
-        .dark-mode-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .page-title {
-            color: #7c3aed;
-            font-weight: bold;
-        }
-
-        .filter-box {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .filter-box .form-control, 
-        .filter-box .form-select {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--border-color);
-        }
-
-        .filter-box .form-control::placeholder {
-            color: #888;
-        }
-
-        .event-card {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            overflow: hidden;
-            height: 100%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-image {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
-
-        .event-title {
-            color: #7c3aed;
-            font-weight: bold;
-        }
-
-        .btn-purple {
-            background-color: #6d28d9;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            padding: 6px 14px;
-        }
-
-        .btn-purple:hover {
-            background-color: #4c1d95;
-            color: white;
-        }
-
-        .event-category {
-            color: #a78bfa;
-            font-weight: bold;
-        }
-
-        /* التذييل الجديد (Footer) */
-        footer {
-            background-color: var(--footer-bg);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: #ddd6fe;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .social-icons a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 35px;
-            height: 35px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            margin: 0 5px;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .social-icons a:hover {
-            background: #7c3aed;
-        }
-
-        /* زر السهم للأعلى (Scroll to Top) */
-        .scroll-top-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #4c1d95, #7c3aed);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s, background 0.2s;
-            z-index: 1000;
-        }
-
-        .scroll-top-btn:hover {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, #5b21b6, #8b5cf6);
-        }
-
-        #noResults {
-            display: none;
-            color: #f87171;
-            text-align: center;
-            margin-top: 25px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
     <!-- رأس الصفحة وشريط التنقل -->
     <header>
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <div class="logo">🎓 دليل الفعاليات SVU</div>
+                <a href="index.html" class="logo"><img src="assets/img/svu-logo.png" alt="شعار الجامعة الافتراضية السورية" class="university-logo"> دليل الفعاليات الجامعية</a>
                 <div class="d-flex align-items-center">
                     <nav class="navbar">
                         <a href="index.html">الرئيسية</a>
@@ -243,15 +34,15 @@
     <main class="container py-5">
         <div class="text-center mb-4">
             <h1 class="page-title">اكتشف الفعاليات الجامعية</h1>
-            <p class="text-muted">ابحث عن الفعالية المناسبة لك وشاركنا أجمل النشاطات.</p>
+            <p class="text-muted">ابحث وفلتر الفعاليات حسب الاسم، التصنيف، التاريخ، أو الموقع.</p>
         </div>
 
-        <!-- صندوق البحث والفلترة -->
-        <div class="filter-box mb-5">
+        <!-- شريط أدوات البحث والفلترة (شاملاً التاريخ والتصنيف والموقع) -->
+        <section class="filter-box mb-5">
             <div class="row g-3">
-                <div class="col-md-4">
-                    <label for="searchInput" class="form-label fw-bold">البحث عن فعالية</label>
-                    <input type="text" id="searchInput" class="form-control" placeholder="اكتب اسم الفعالية">
+                <div class="col-md-3">
+                    <label for="searchInput" class="form-label fw-bold">البحث بالاسم</label>
+                    <input type="text" id="searchInput" class="form-control" placeholder="اكتب اسم الفعالية...">
                 </div>
                 <div class="col-md-3">
                     <label for="categoryFilter" class="form-label fw-bold">التصنيف</label>
@@ -265,101 +56,111 @@
                     </select>
                 </div>
                 <div class="col-md-3">
+                    <label for="dateFilter" class="form-label fw-bold">التاريخ</label>
+                    <input type="date" id="dateFilter" class="form-control">
+                </div>
+                <div class="col-md-3">
                     <label for="locationFilter" class="form-label fw-bold">المكان</label>
                     <select id="locationFilter" class="form-select">
                         <option value="">كل الأماكن</option>
-                        <option value="دمشق - المقر الرئيسي للجامعة الافتراضية">المقر الرئيسي</option>
-                        <option value="قاعة التدريب الرقمي / عبر الإنترنت">عبر الإنترنت</option>
+                        <option value="دمشق - المقر الرئيسي">المقر الرئيسي</option>
+                        <option value="عبر الإنترنت">عبر الإنترنت</option>
                         <option value="الملعب الجامعي المركزي">الملعب الجامعي</option>
                         <option value="مسرح الجامعة الكبير">المسرح الكبير</option>
+                        <option value="حديقة الجامعة">حديقة الجامعة</option>
                     </select>
                 </div>
-                <div class="col-md-2 d-flex align-items-end">
-                    <button type="button" id="searchButton" class="btn btn-purple w-100 py-2">بحث</button>
-                </div>
             </div>
-            <div class="mt-3 d-flex justify-content-between align-items-center flex-wrap">
-                <button type="button" id="resetButton" class="btn btn-outline-secondary btn-sm">إظهار جميع الفعاليات</button>
-                <span id="resultCount" class="text-muted small">عدد الفعاليات المعروضة: 5</span>
+            <div class="mt-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <button type="button" id="resetButton" class="btn btn-outline-secondary btn-sm">إعادة ضبط الفلاتر (إظهار الكل)</button>
+                <span id="resultCount" class="text-muted small fw-bold">عدد الفعاليات المعروضة: 5</span>
             </div>
-        </div>
+        </section>
 
-        <!-- قائمة الفعاليات -->
-        <div class="row g-4" id="eventsContainer">
-
-            <!-- 1. ملتقى المعرفة والإبداع -->
-            <div class="col-md-6 col-lg-4 event-item" data-title="ملتقى المعرفة والإبداع" data-category="ثقافي" data-location="دمشق - المقر الرئيسي للجامعة الافتراضية">
-                <div class="card event-card">
-                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80" class="event-image" alt="ملتقى المعرفة والإبداع">
-                    <div class="card-body">
-                        <h3 class="h5 event-title">ملتقى المعرفة والإبداع</h3>
-                        <p class="event-category">التصنيف: ثقافي</p>
-                        <p class="text-muted small">📍 دمشق - المقر الرئيسي</p>
-                        <p>لقاء يجمع الطلاب لتبادل الأفكار والخبرات واكتشاف اهتمامات جديدة.</p>
-                        <a href="event.html?id=knowledge" class="btn btn-purple">التفاصيل</a>
+        <!-- شبكة كروت الفعاليات -->
+        <section>
+            <div class="row g-4" id="eventsContainer">
+<!-- 1. ملتقى المعرفة والإبداع -->
+                <div class="col-md-6 col-lg-4 event-item" data-title="ملتقى المعرفة والإبداع" data-category="ثقافي" data-date="2026-11-15" data-location="دمشق - المقر الرئيسي">
+                    <div class="card event-card">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80" class="event-image" alt="ملتقى المعرفة والإبداع">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">ثقافي</span>
+                            <h3 class="h5 event-title">ملتقى المعرفة والإبداع</h3>
+                            <p class="text-muted small mb-1">📅 التاريخ: 2026-11-15</p>
+                            <p class="text-muted small mb-2">📍 المكان: دمشق - المقر الرئيسي</p>
+                            <p class="flex-grow-1">لقاء يجمع الطلاب لتبادل الأفكار والخبرات واكتشاف اهتمامات جديدة.</p>
+                            <a href="event.html?id=knowledge" class="btn btn-purple mt-2">التفاصيل</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 2. ورشة التعلم الرقمي -->
-            <div class="col-md-6 col-lg-4 event-item" data-title="ورشة التعلم الرقمي" data-category="تعليمي" data-location="قاعة التدريب الرقمي / عبر الإنترنت">
-                <div class="card event-card">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" class="event-image" alt="ورشة التعلم الرقمي">
-                    <div class="card-body">
-                        <h3 class="h5 event-title">ورشة التعلم الرقمي</h3>
-                        <p class="event-category">التصنيف: تعليمي</p>
-                        <p class="text-muted small">📍 عبر الإنترنت</p>
-                        <p>نشاط تعليمي للتعرف على أدوات التعلم الحديثة واستخدامات الذكاء الاصطناعي.</p>
-                        <a href="event.html?id=learning" class="btn btn-purple">التفاصيل</a>
+                <!-- 2. ورشة التعلم الرقمي -->
+                <div class="col-md-6 col-lg-4 event-item" data-title="ورشة التعلم الرقمي" data-category="تعليمي" data-date="2026-11-20" data-location="عبر الإنترنت">
+                    <div class="card event-card">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" class="event-image" alt="ورشة التعلم الرقمي">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">تعليمي</span>
+                            <h3 class="h5 event-title">ورشة التعلم الرقمي</h3>
+                            <p class="text-muted small mb-1">📅 التاريخ: 2026-11-20</p>
+                            <p class="text-muted small mb-2">📍 المكان: عبر الإنترنت</p>
+                            <p class="flex-grow-1">نشاط تعليمي للتعرف على أدوات التعلم الحديثة واستخدامات الذكاء الاصطناعي.</p>
+                            <a href="event.html?id=learning" class="btn btn-purple mt-2">التفاصيل</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 3. يوم النشاط الرياضي -->
-            <div class="col-md-6 col-lg-4 event-item" data-title="يوم النشاط الرياضي" data-category="رياضي" data-location="الملعب الجامعي المركزي">
-                <div class="card event-card">
-                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80" class="event-image" alt="يوم النشاط الرياضي">
-                    <div class="card-body">
-                        <h3 class="h5 event-title">يوم النشاط الرياضي</h3>
-                        <p class="event-category">التصنيف: رياضي</p>
-                        <p class="text-muted small">📍 الملعب الجامعي المركزي</p>
-                        <p>فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون وروح الفريق.</p>
-                        <a href="event.html?id=sport" class="btn btn-purple">التفاصيل</a>
+                <!-- 3. يوم النشاط الرياضي -->
+                <div class="col-md-6 col-lg-4 event-item" data-title="يوم النشاط الرياضي" data-category="رياضي" data-date="2026-11-28" data-location="الملعب الجامعي المركزي">
+                    <div class="card event-card">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80" class="event-image" alt="يوم النشاط الرياضي">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">رياضي</span>
+                            <h3 class="h5 event-title">يوم النشاط الرياضي</h3>
+                            <p class="text-muted small mb-1">📅 التاريخ: 2026-11-28</p>
+                            <p class="text-muted small mb-2">📍 المكان: الملعب الجامعي المركزي</p>
+                            <p class="flex-grow-1">فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون وروح الفريق.</p>
+                            <a href="event.html?id=sport" class="btn btn-purple mt-2">التفاصيل</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 4. مساحة المواهب الموسيقية -->
-            <div class="col-md-6 col-lg-4 event-item" data-title="مساحة المواهب الموسيقية" data-category="فني" data-location="مسرح الجامعة الكبير">
-                <div class="card event-card">
-                    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" class="event-image" alt="مساحة المواهب الموسيقية">
-                    <div class="card-body">
-                        <h3 class="h5 event-title">مساحة المواهب الموسيقية</h3>
-                        <p class="event-category">التصنيف: فني</p>
-                        <p class="text-muted small">📍 مسرح الجامعة الكبير</p>
-                        <p>مساحة للطلاب لعرض مواهبهم الموسيقية والاستمتاع بالعروض الفنية.</p>
-                        <a href="event.html?id=music" class="btn btn-purple">التفاصيل</a>
+                <!-- 4. مساحة المواهب الموسيقية -->
+                <div class="col-md-6 col-lg-4 event-item" data-title="مساحة المواهب الموسيقية" data-category="فني" data-date="2026-12-05" data-location="مسرح الجامعة الكبير">
+                    <div class="card event-card">
+<img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" class="event-image" alt="مساحة المواهب الموسيقية">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">فني</span>
+                            <h3 class="h5 event-title">مساحة المواهب الموسيقية</h3>
+                            <p class="text-muted small mb-1">📅 التاريخ: 2026-12-05</p>
+                            <p class="text-muted small mb-2">📍 المكان: مسرح الجامعة الكبير</p>
+                            <p class="flex-grow-1">مساحة للطلاب لعرض مواهبهم الموسيقية والاستمتاع بالعروض الفنية.</p>
+                            <a href="event.html?id=music" class="btn btn-purple mt-2">التفاصيل</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 5. اليوم العائلي الترفيهي -->
-            <div class="col-md-6 col-lg-4 event-item" data-title="اليوم العائلي الترفيهي" data-category="ترفيهي" data-location="حديقة الجامعة والمساحات الخضراء">
-                <div class="card event-card">
-                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" class="event-image" alt="اليوم العائلي الترفيهي">
-                    <div class="card-body">
-                        <h3 class="h5 event-title">اليوم العائلي الترفيهي</h3>
-                        <p class="event-category">التصنيف: ترفيهي</p>
-                        <p class="text-muted small">📍 حديقة الجامعة</p>
-                        <p>فعالية اجتماعية تجمع العائلات في أجواء من المرح والتواصل.</p>
-                        <a href="event.html?id=family" class="btn btn-purple">التفاصيل</a>
+                <!-- 5. اليوم العائلي الترفيهي -->
+                <div class="col-md-6 col-lg-4 event-item" data-title="اليوم العائلي الترفيهي" data-category="ترفيهي" data-date="2026-12-12" data-location="حديقة الجامعة">
+                    <div class="card event-card">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" class="event-image" alt="اليوم العائلي الترفيهي">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">ترفيهي</span>
+                            <h3 class="h5 event-title">اليوم العائلي الترفيهي</h3>
+                            <p class="text-muted small mb-1">📅 التاريخ: 2026-12-12</p>
+                            <p class="text-muted small mb-2">📍 المكان: حديقة الجامعة</p>
+                            <p class="flex-grow-1">فعالية اجتماعية تجمع العائلات في أجواء من المرح والتواصل.</p>
+                            <a href="event.html?id=family" class="btn btn-purple mt-2">التفاصيل</a>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-        </div>
-
-        <p id="noResults">لا توجد فعاليات تطابق خيارات البحث.</p>
+            <div id="noResults" class="alert alert-warning text-center mt-4 d-none" role="alert">
+                لا توجد فعاليات تطابق خيارات البحث المحددة.
+            </div>
+        </section>
     </main>
 
     <!-- التذييل -->
@@ -374,39 +175,40 @@
         <p class="mb-0 small"><a href="mailto:events@svuonline.org">events@svuonline.org</a> ✉</p>
     </footer>
 
-    <!-- زر السهم للأعلى -->
     <button class="scroll-top-btn" id="scrollTopBtn" title="العودة للأعلى">↑</button>
 
-    <!-- ربط ملف الـ JS الخارجي -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- سكربت الفلترة والبحث -->
+    <!-- سكربت الفلترة المتقدمة (الاسم، التصنيف، التاريخ، المكان) -->
     <script>
         const searchInput = document.getElementById("searchInput");
         const categoryFilter = document.getElementById("categoryFilter");
+        const dateFilter = document.getElementById("dateFilter");
         const locationFilter = document.getElementById("locationFilter");
-        const searchButton = document.getElementById("searchButton");
         const resetButton = document.getElementById("resetButton");
         const resultCount = document.getElementById("resultCount");
         const noResults = document.getElementById("noResults");
         const events = document.querySelectorAll(".event-item");
 
-        function filterEvents() {
+        function filterEventsList() {
             const searchText = searchInput.value.trim().toLowerCase();
             const selectedCategory = categoryFilter.value;
+            const selectedDate = dateFilter.value;
             const selectedLocation = locationFilter.value;
             let visibleCount = 0;
-
-            events.forEach(function (event) {
+events.forEach(function (event) {
                 const title = event.dataset.title.toLowerCase();
                 const category = event.dataset.category;
+                const date = event.dataset.date;
                 const location = event.dataset.location;
 
                 const matchesSearch = title.includes(searchText);
                 const matchesCategory = selectedCategory === "" || category === selectedCategory;
+                const matchesDate = selectedDate === "" || date === selectedDate;
                 const matchesLocation = selectedLocation === "" || location.includes(selectedLocation);
 
-                if (matchesSearch && matchesCategory && matchesLocation) {
+                if (matchesSearch && matchesCategory && matchesDate && matchesLocation) {
                     event.style.display = "";
                     visibleCount++;
                 } else {
@@ -415,21 +217,22 @@
             });
 
             resultCount.textContent = "عدد الفعاليات المعروضة: " + visibleCount;
-            noResults.style.display = visibleCount === 0 ? "block" : "none";
+            noResults.classList.toggle("d-none", visibleCount > 0);
         }
 
-        searchButton.addEventListener("click", filterEvents);
-        searchInput.addEventListener("input", filterEvents);
-        categoryFilter.addEventListener("change", filterEvents);
-        locationFilter.addEventListener("change", filterEvents);
+        searchInput.addEventListener("input", filterEventsList);
+        categoryFilter.addEventListener("change", filterEventsList);
+        dateFilter.addEventListener("change", filterEventsList);
+        locationFilter.addEventListener("change", filterEventsList);
+
         resetButton.addEventListener("click", function () {
             searchInput.value = "";
             categoryFilter.value = "";
+            dateFilter.value = "";
             locationFilter.value = "";
-            filterEvents();
+            filterEventsList();
         });
-        filterEvents();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

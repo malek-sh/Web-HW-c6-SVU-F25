@@ -4,244 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>دليل فعاليات الجامعة الافتراضية السورية</title>
+    <title>الرئيسية | دليل فعاليات الجامعة الافتراضية السورية</title>
     <meta name="description" content="دليل فعاليات الجامعة الافتراضية السورية لاكتشاف الفعاليات والأنشطة الثقافية والتعليمية والرياضية والاجتماعية.">
 
+    <!-- Bootstrap RTL CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-color: #f5f3ff;
-            --text-color: #252044;
-            --card-bg: #ffffff;
-            --header-bg: linear-gradient(135deg, #4c1d95, #7c3aed);
-            --footer-bg: #1e1b4b;
-            --hero-bg: linear-gradient(135deg, #ede9fe, #ddd6fe);
-            --border-color: #e9d5ff;
-        }
-
-        body.dark-mode {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --card-bg: #1e293b;
-            --header-bg: linear-gradient(135deg, #090d16, #1e1b4b);
-            --footer-bg: #090d16;
-            --hero-bg: linear-gradient(135deg, #1e1b4b, #0f172a);
-            --border-color: #334155;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        header {
-            background: var(--header-bg);
-            color: white;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 8px;
-        }
-
-        .navbar a:hover {
-            text-decoration: underline;
-        }
-
-        .dark-mode-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 15px;
-            transition: background 0.2s;
-        }
-
-        .dark-mode-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .hero {
-            padding: 65px 20px;
-            text-align: center;
-            background: var(--hero-bg);
-        }
-
-        .hero h1 {
-            color: #7c3aed;
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--text-color);
-        }
-
-        .section-title {
-            color: #7c3aed;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-
-        .category-btn {
-            border: 1px solid var(--border-color);
-            background-color: var(--card-bg);
-            color: #7c3aed;
-            padding: 12px 24px;
-            border-radius: 25px;
-            margin: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .category-btn:hover,
-        .category-btn.active {
-            background-color: #7c3aed;
-            color: white;
-        }
-
-        .event-card {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            overflow: hidden;
-            height: 100%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-image {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
-
-        .event-badge {
-            background-color: #7c3aed;
-            color: white;
-        }
-
-        .btn-purple {
-            background-color: #6d28d9;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            border: none;
-            padding: 8px 16px;
-            display: inline-block;
-        }
-
-        .btn-purple:hover {
-            background-color: #4c1d95;
-            color: white;
-        }
-
-        .team-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 35px 20px;
-            border-radius: 15px;
-        }
-
-        footer {
-            background-color: var(--footer-bg);
-            color: white;
-            padding: 40px 20px;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        footer a {
-            color: #ddd6fe;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .social-icons a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 35px;
-            height: 35px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            margin: 0 5px;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .social-icons a:hover {
-            background: #7c3aed;
-        }
-
-        .scroll-top-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #4c1d95, #7c3aed);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s, background 0.2s;
-            z-index: 1000;
-        }
-
-        .scroll-top-btn:hover {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, #5b21b6, #8b5cf6);
-        }
-
-        .event-item[hidden] {
-            display: none !important;
-        }
-    </style>
+    <!-- ملف التنسيق الخارجي الموحد -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
+    <!-- رأس الصفحة وشريط التنقل -->
     <header>
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <div class="logo">🎓 دليل الفعاليات الجامعية</div>
+                <a href="index.html" class="logo"><img src="assets/img/svu-logo.png" alt="شعار الجامعة الافتراضية السورية" class="university-logo"> دليل الفعاليات الجامعية</a>
                 <div class="d-flex align-items-center">
                     <nav class="navbar">
                         <a href="index.html" aria-current="page">الرئيسية</a>
@@ -257,149 +35,193 @@
     </header>
 
     <main>
+        <!-- قسم الترحيب -->
         <section class="hero">
             <div class="container">
                 <h1>دليل فعاليات الجامعة الافتراضية السورية</h1>
-                <p>اكتشف الفعاليات والأنشطة الجامعية، وشارك في تجارب جديدة تجمع بين المعرفة والثقافة والترفيه.</p>
-                <a href="#latestEvents" class="btn btn-purple btn-lg mt-3">اكتشف الفعاليات</a>
+                <p class="text-muted fs-5">اكتشف الفعاليات والأنشطة الجامعية، وشارك في تجارب جديدة تجمع بين المعرفة والثقافة والترفيه.</p>
+                <a href="#latestEvents" class="btn btn-purple btn-lg mt-2">اكتشف الفعاليات</a>
             </div>
         </section>
 
+        <!-- قسم 1: سلايدر الفعاليات البارزة هذا الأسبوع -->
         <section class="container py-5">
-            <h2 class="section-title text-center">⭐ فعاليات بارزة</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card event-card">
-                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80" class="card-img-top event-image" alt="ملتقى طلابي">
-                        <div class="card-body">
+            <h2 class="section-title text-center mb-4">⭐ فعاليات بارزة هذا الأسبوع</h2>
+            
+            <div id="featuredCarousel" class="carousel slide shadow rounded-4 overflow-hidden" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="ملتقى المعرفة والإبداع">
+                        <div class="carousel-caption">
                             <span class="badge event-badge mb-2">ثقافة</span>
-                            <h3 class="h5">ملتقى المعرفة والإبداع</h3>
-                            <p class="card-text">لقاء يجمع الطلاب لتبادل الأفكار والخبرات واكتشاف اهتمامات جديدة في مجالات المعرفة والثقافة.</p>
-                            <!-- رابط محدد بالـ id -->
-                            <a href="event.html?id=knowledge" class="btn btn-purple">التفاصيل</a>
+                            <h3>ملتقى المعرفة والإبداع</h3>
+                            <p>لقاء يجمع الطلاب لتبادل الأفكار والخبرات واكتشاف اهتمامات جديدة في مجالات المعرفة والثقافة.</p>
+                            <a href="event.html?id=knowledge" class="btn btn-purple btn-sm">عرض التفاصيل</a>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="card event-card">
-                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80" class="card-img-top event-image" alt="لقاء اجتماعي">
-                        <div class="card-body">
-                            <span class="badge event-badge mb-2">اجتماعي</span>
-                            <h3 class="h5">لقاء التواصل الطلابي</h3>
-                            <p class="card-text">مساحة للتعارف والتواصل وتبادل التجارب بين أفراد المجتمع الجامعي.</p>
-                            <!-- رابط محدد بالـ id -->
-                            <a href="event.html?id=knowledge" class="btn btn-purple">التفاصيل</a>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="ورشة التعلم الرقمي">
+                        <div class="carousel-caption">
+                            <span class="badge event-badge mb-2">تعليمي</span>
+<h3>ورشة التعلم الرقمي والذكاء الاصطناعي</h3>
+                            <p>نشاط تفاعلي للتعرف على أدوات التعلم الحديثة وأساليب الاستفادة من التقنيات الرقمية.</p>
+                            <a href="event.html?id=learning" class="btn btn-purple btn-sm">عرض التفاصيل</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="container pb-5 text-center">
-            <h2 class="section-title">اكتشف حسب التصنيف</h2>
-            <p>اختر تصنيفاً لعرض الفعاليات التابعة له.</p>
-            <button type="button" class="category-btn" onclick="filterEvents('ثقافة', this)">📚 ثقافة</button>
-            <button type="button" class="category-btn" onclick="filterEvents('رياضة', this)">⚽ رياضة</button>
-            <button type="button" class="category-btn" onclick="filterEvents('موسيقى', this)">🎵 موسيقى</button>
-            <button type="button" class="category-btn" onclick="filterEvents('عائلي', this)">👨‍👩‍👧‍👦 عائلي</button>
-            <button type="button" class="category-btn active" onclick="filterEvents('الكل', this)">عرض الكل</button>
-        </section>
-
-        <section class="container pb-5" id="latestEvents">
-            <h2 class="section-title text-center">🗓️ أحدث الفعاليات</h2>
-            <div class="row g-4" id="eventsList">
-                <div class="col-md-6 col-lg-4 event-item" data-category="ثقافة">
-                    <div class="card event-card">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" class="card-img-top event-image" alt="ورشة التعلم الرقمي">
-                        <div class="card-body">
-                            <span class="badge event-badge mb-2">ثقافة</span>
-                            <h3 class="h5">ورشة التعلم الرقمي</h3>
-                            <p>نشاط تعليمي للتعرف على أدوات التعلم الحديثة وأساليب الاستفادة من التقنيات الرقمية.</p>
-                            <a href="event.html?id=learning" class="btn btn-purple">التفاصيل</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 event-item" data-category="رياضة">
-                    <div class="card event-card">
-                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80" class="card-img-top event-image" alt="يوم النشاط الرياضي">
-                        <div class="card-body">
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="يوم النشاط الرياضي">
+                        <div class="carousel-caption">
                             <span class="badge event-badge mb-2">رياضة</span>
-                            <h3 class="h5">يوم النشاط الرياضي</h3>
-                            <p>فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون وروح الفريق.</p>
-                            <a href="event.html?id=sport" class="btn btn-purple">التفاصيل</a>
+                            <h3>يوم النشاط الرياضي الجامعي</h3>
+                            <p>فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون وروح الفريق بين الطلاب.</p>
+                            <a href="event.html?id=sport" class="btn btn-purple btn-sm">عرض التفاصيل</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 event-item" data-category="موسيقى">
+                <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">السابق</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">التالي</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- قسم 2: تصنيفات سريعة مع حفظ التفضيلات -->
+        <section class="container pb-5 text-center">
+            <h2 class="section-title mb-2">🏷️ تصنيفات سريعة</h2>
+            <p class="text-muted mb-3">اختر تصنيفاً لفلترة أحدث الفعاليات (يتم حفظ تفضيلك تلقائياً):</p>
+            <div>
+                <button type="button" class="category-btn active" data-cat="الكل" onclick="filterHomeEvents('الكل', this)">عرض الكل</button>
+                <button type="button" class="category-btn" data-cat="ثقافة" onclick="filterHomeEvents('ثقافة', this)">📚 ثقافة</button>
+                <button type="button" class="category-btn" data-cat="رياضة" onclick="filterHomeEvents('رياضة', this)">⚽ رياضة</button>
+                <button type="button" class="category-btn" data-cat="موسيقى" onclick="filterHomeEvents('موسيقى', this)">🎵 موسيقى</button>
+                <button type="button" class="category-btn" data-cat="عائلي" onclick="filterHomeEvents('عائلي', this)">👨‍👩‍👧‍👦 عائلي</button>
+            </div>
+        </section>
+
+        <!-- قسم 3: شبكة كروت أحدث الفعاليات -->
+        <section class="container pb-5" id="latestEvents">
+            <h2 class="section-title text-center mb-4">🗓️ أحدث الفعاليات</h2>
+            <div class="row g-4" id="eventsList">
+                
+                <div class="col-md-6 col-lg-3 event-item" data-category="ثقافة">
                     <div class="card event-card">
-                        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80" class="card-img-top event-image" alt="مساحة المواهب الموسيقية">
-                        <div class="card-body">
-                            <span class="badge event-badge mb-2">موسيقى</span>
-                            <h3 class="h5">مساحة المواهب الموسيقية</h3>
-                            <p>مساحة للتعرف على المواهب الفنية ومشاركة الاهتمامات الموسيقية والإبداعية.</p>
-                            <a href="event.html?id=music" class="btn btn-purple">التفاصيل</a>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" class="card-img-top event-image" alt="ورشة التعلم الرقمي">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">ثقافة</span>
+                            <h3 class="h5 event-title">ورشة التعلم الرقمي</h3>
+                            <p class="small text-muted mb-1">📅 2026-11-20 | 📍 عبر الإنترنت</p>
+                            <p class="small flex-grow-1">نشاط تعليمي للتعرف على أدوات التعلم الحديثة واستخدامات الذكاء الاصطناعي.</p>
+                            <a href="event.html?id=learning" class="btn btn-purple mt-2">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+<div class="col-md-6 col-lg-3 event-item" data-category="رياضة">
+                    <div class="card event-card">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80" class="card-img-top event-image" alt="يوم النشاط الرياضي">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">رياضة</span>
+                            <h3 class="h5 event-title">يوم النشاط الرياضي</h3>
+                            <p class="small text-muted mb-1">📅 2026-11-28 | 📍 الملعب المركزي</p>
+                            <p class="small flex-grow-1">فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون وروح الفريق.</p>
+                            <a href="event.html?id=sport" class="btn btn-purple mt-2">التفاصيل</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 event-item" data-category="عائلي">
+                <div class="col-md-6 col-lg-3 event-item" data-category="موسيقى">
                     <div class="card event-card">
-                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=80" class="card-img-top event-image" alt="اليوم العائلي الترفيهي">
-                        <div class="card-body">
-                            <span class="badge event-badge mb-2">عائلي</span>
-                            <h3 class="h5">اليوم العائلي الترفيهي</h3>
-                            <p>فعالية اجتماعية تجمع العائلات في أجواء من المرح والتواصل والأنشطة المشتركة.</p>
-                            <a href="event.html?id=family" class="btn btn-purple">التفاصيل</a>
+                        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" class="card-img-top event-image" alt="مساحة المواهب الموسيقية">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">موسيقى</span>
+                            <h3 class="h5 event-title">مساحة المواهب الموسيقية</h3>
+                            <p class="small text-muted mb-1">📅 2026-12-05 | 📍 مسرح الجامعة</p>
+                            <p class="small flex-grow-1">مساحة للتعرف على المواهب الفنية ومشاركة الاهتمامات الموسيقية والإبداعية.</p>
+                            <a href="event.html?id=music" class="btn btn-purple mt-2">التفاصيل</a>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-6 col-lg-3 event-item" data-category="عائلي">
+                    <div class="card event-card">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" class="card-img-top event-image" alt="اليوم العائلي الترفيهي">
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge event-badge align-self-start mb-2">عائلي</span>
+                            <h3 class="h5 event-title">اليوم العائلي الترفيهي</h3>
+                            <p class="small text-muted mb-1">📅 2026-12-12 | 📍 حديقة الجامعة</p>
+                            <p class="small flex-grow-1">فعالية اجتماعية تجمع العائلات في أجواء من المرح والتواصل والأنشطة المشتركة.</p>
+                            <a href="event.html?id=family" class="btn btn-purple mt-2">التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <p id="noEvents" class="text-center mt-4" hidden>لا توجد فعاليات ضمن هذا التصنيف حالياً.</p>
+            <p id="noEvents" class="text-center text-danger fw-bold mt-4" hidden>لا توجد فعاليات ضمن هذا التصنيف حالياً.</p>
             <div class="text-center mt-4">
-                <a href="events.html" class="btn btn-outline-secondary">عرض جميع الفعاليات</a>
+                <a href="events.html" class="btn btn-outline-secondary px-4">عرض جميع الفعاليات</a>
             </div>
         </section>
 
-        <section class="container pb-5">
-            <div class="team-section text-center">
-                <h2 class="section-title">فريق العمل</h2>
-                <p class="text-muted">أُنجز هذا المشروع ضمن متطلبات مادة برمجة الويب 1 في الجامعة الافتراضية السورية.</p>
-                <div class="row justify-content-center g-3">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card p-3 h-100 event-card">
-                            <h3 class="h6 fw-bold">zainah_343224</h3>
-                            <p class="mb-0 small">الرقم الجامعي: 343224</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card p-3 h-100 event-card">
-                            <h3 class="h6 fw-bold">maryah_371855</h3>
-                            <p class="mb-0 small">الرقم الجامعي: 371855</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card p-3 h-100 event-card">
-                            <h3 class="h6 fw-bold">reem_366874</h3>
-                            <p class="mb-0 small">الرقم الجامعي: 366874</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card p-3 h-100 event-card">
-                            <h3 class="h6 fw-bold">Malek_407636</h3>
-                            <p class="mb-0 small">الرقم الجامعي: 407636</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- قسم 4: أسماء وأرقام IDs الطلاب المشاركين-->
+<section class="container pb-5">
+  <div class="team-section p-4 text-center">
+    <h2 class="section-title mb-2">الطلاب المشاركون في المشروع (SVU IDs)</h2>
+    <p class="text-muted mb-4">أنجز هذا المشروع ضمن متطلبات مقرر برمجة الويب 1 (BWP401) - الجامعة الافتراضية السورية</p>
+    <div class="row justify-content-center g-3">
+      
+      <div class="col-sm-6 col-lg-3">
+        <div class="card p-3 h-100 event-card">
+          <h3 class="h6 fw-bold text-purple mb-1">زينة النحاس</h3>
+          <p class="mb-1 small fw-semibold text-secondary">zainah_343224</p>
+          <p class="mb-0 small text-muted">الرقم الجامعي: 343224</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="card p-3 h-100 event-card">
+          <h3 class="h6 fw-bold text-purple mb-1">مارية بدران</h3>
+          <p class="mb-1 small fw-semibold text-secondary">maryah_371855</p>
+          <p class="mb-0 small text-muted">الرقم الجامعي: 371855</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="card p-3 h-100 event-card">
+          <h3 class="h6 fw-bold text-purple mb-1">ريم صالح</h3>
+          <p class="mb-1 small fw-semibold text-secondary">reem_366874</p>
+          <p class="mb-0 small text-muted">الرقم الجامعي: 366874</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="card p-3 h-100 event-card">
+          <h3 class="h6 fw-bold text-purple mb-1">مالك شاكر</h3>
+          <p class="mb-1 small fw-semibold text-secondary">Malek_407636</p>
+          <p class="mb-0 small text-muted">الرقم الجامعي: 407636</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
     </main>
 
+    <!-- التذييل -->
     <footer>
-        <h5 class="fw-bold mb-2">🎓 دليل فعاليات الجامعة الافتراضية السورية</h5>
+        <h5 class="fw-bold mb-2"><img src="assets/img/svu-logo.png" alt="شعار الجامعة الافتراضية السورية" class="university-logo"> دليل فعاليات الجامعة الافتراضية السورية</h5>
         <p class="small text-white-50 mb-3">جميع الحقوق محفوظة © 2026 - مشروع مقرر BWP401</p>
         <div class="social-icons mb-3">
             <a href="#" title="LinkedIn">in</a>
@@ -412,6 +234,7 @@
     <button class="scroll-top-btn" id="scrollTopBtn" title="العودة للأعلى">↑</button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
+
 </html>

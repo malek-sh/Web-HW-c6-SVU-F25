@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل الفعالية | دليل فعاليات الجامعة الافتراضية السورية</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap RTL CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- ربط ملف التنسيق الخارجي إن وجد -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 
+    <!-- تنسيقات مدمجة لضمان عمل الصفحة والمعرض والنافذة المنبثقة تحت أي ظرف -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
         :root {
             --bg-color: #f5f3ff;
             --text-color: #252044;
@@ -33,7 +38,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Cairo', Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -43,11 +48,11 @@
         header {
             background: var(--header-bg);
             color: white;
-            padding: 22px 0;
+            padding: 20px 0;
         }
 
-        .logo { font-size: 25px; font-weight: bold; }
-        .navbar a { color: white; text-decoration: none; margin: 8px; }
+        .logo { display: inline-flex; align-items: center; gap: 10px; font-size: 24px; font-weight: bold; color: white; text-decoration: none; }\n        .university-logo { height: 82px; width: auto; max-width: 90px; object-fit: contain; background: #fff; border-radius: 6px; }
+        .navbar a { color: white; text-decoration: none; margin: 8px; font-weight: 600; }
         .navbar a:hover { text-decoration: underline; }
 
         .dark-mode-btn {
@@ -63,13 +68,13 @@
 
         .event-header {
             background: var(--hero-bg);
-            padding: 40px 20px;
+            padding: 45px 20px;
             text-align: center;
         }
 
         .event-header h1 { color: #7c3aed; font-weight: bold; }
 
-        .event-image {
+        .event-detail-image {
             width: 100%;
             height: 350px;
             object-fit: cover;
@@ -78,10 +83,15 @@
 
         .gallery-img {
             width: 100%;
-            height: 130px;
+            height: 140px;
             object-fit: cover;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
         }
 
         .info-card {
@@ -94,25 +104,53 @@
             height: 100%;
         }
 
-        .section-title { color: #7c3aed; font-weight: bold; margin-bottom: 20px; }
-        
+        .section-title { color: #7c3aed; font-weight: bold; margin-bottom: 18px; }
+
         .btn-purple {
             background-color: #6d28d9;
             color: white;
             border-radius: 8px;
             border: none;
+            padding: 8px 18px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
         }
+
         .btn-purple:hover { background-color: #4c1d95; color: white; }
 
         .map-image { width: 100%; border-radius: 12px; margin-top: 10px; }
+/* نافذة الحجز المنبثقة المضمونة */
+        .custom-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 15px;
+        }
 
-        .modal-content {
+        .custom-modal-overlay.show {
+            display: flex;
+        }
+
+        .custom-modal-box {
             background-color: var(--card-bg);
             color: var(--text-color);
             border: 1px solid var(--border-color);
             border-radius: 18px;
+            width: 100%;
+            max-width: 480px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        .modal-content .form-control {
+
+        .custom-modal-box .form-control {
             background-color: var(--input-bg);
             color: var(--text-color);
             border-color: var(--border-color);
@@ -125,6 +163,7 @@
             padding: 40px 20px;
             margin-top: 50px;
         }
+
         footer a { color: #ddd6fe; text-decoration: none; margin: 0 10px; }
 
         .social-icons a {
@@ -166,7 +205,7 @@
     <header>
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <div class="logo">🎓 دليل الفعاليات SVU</div>
+                <a href="index.html" class="logo"><img src="assets/img/svu-logo.png" alt="شعار الجامعة الافتراضية السورية" class="university-logo"> دليل الفعاليات الجامعية</a>
                 <div class="d-flex align-items-center">
                     <nav class="navbar">
                         <a href="index.html">الرئيسية</a>
@@ -175,63 +214,75 @@
                         <a href="about.html">عن الدليل</a>
                         <a href="contact.html">اتصل بنا</a>
                     </nav>
-                    <button class="dark-mode-btn" id="darkModeToggle">🌙</button>
+                    <button class="dark-mode-btn" id="darkModeToggle" type="button">🌙</button>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
+        <!-- ترويسة الفعالية -->
         <section class="event-header">
             <div class="container">
-                <span class="badge text-white mb-3" id="eventBadge" style="background-color: #7c3aed;">ثقافة وتعليم</span>
+                <span class="badge text-white mb-3 px-3 py-2" id="eventBadge" style="background-color: #7c3aed;">ثقافي</span>
                 <h1 id="eventTitle">ملتقى المعرفة والإبداع</h1>
                 <p class="mt-3 fs-5" id="eventSub">لقاء يجمع الطلاب لتبادل الأفكار والخبرات واكتشاف اهتمامات جديدة.</p>
                 <p class="text-muted small mb-0">📍 <span id="eventHeaderLoc">دمشق - المقر الرئيسي للجامعة الافتراضية</span></p>
             </div>
         </section>
 
+        <!-- تفاصيل الفعالية والمعرض ومعلومات الحجز -->
         <section class="container py-5">
             <div class="row g-4">
                 <div class="col-lg-7">
-                    <img id="eventImg" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80" class="event-image mb-4" alt="صورة الفعالية">
+<img id="eventImg" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80" class="event-detail-image mb-4" alt="صورة الفعالية">
                     <div class="info-card">
-                        <h2 class="section-title">نبذة عن الفعالية</h2>
-                        <p id="eventDesc1">يهدف ملتقى المعرفة والإبداع إلى توفير مساحة تفاعلية للطلاب لتبادل الأفكار ومشاركة التجارب والتعرف على اهتمامات جديدة في مجالات العلم والثقافة والتكنولوجيا.</p>
-                        <p id="eventDesc2">تتضمن الفعالية نقاشات طلابية وأنشطة معرفية وفرصة للتواصل مع زملاء يشاركون الاهتمامات نفسها.</p>
-                        <h3 class="section-title mt-4">أهداف الفعالية</h3>
+                        <h2 class="section-title h4">نبذة عن الفعالية</h2>
+                        <p id="eventDesc1">يهدف ملتقى المعرفة والإبداع إلى توفير مساحة تفاعلية للطلاب لتبادل الأفكار ومشاركة التجارب والتعرف على اهتمامات جديدة في مجالات العلم والثقافة.</p>
+                        <p id="eventDesc2">تتضمن الفعالية جلسات حوارية ونقاشات مفيدة وفرصاً ممتازة لبناء شبكة علاقات علمية وثقافية مع بقية الطلاب.</p>
+                        
+                        <h3 class="section-title h5 mt-4">أهداف الفعالية</h3>
                         <ul id="eventGoals">
                             <li>تشجيع الإبداع وتبادل المعرفة.</li>
                             <li>تعزيز التواصل بين الطلاب.</li>
                             <li>اكتشاف المواهب والاهتمامات الجديدة.</li>
                             <li>دعم التعلم والعمل الجماعي.</li>
                         </ul>
-                        <h3 class="section-title mt-4">📸 معرض صور الفعالية</h3>
-                        <div class="row g-2" id="eventGallery"></div>
+
+                        <h3 class="section-title h5 mt-4">📸 معرض صور الفعالية</h3>
+                        <div class="row g-3" id="eventGallery">
+                            <div class="col-6">
+                                <img id="galImg1" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" class="gallery-img" alt="صورة معرض 1">
+                            </div>
+                            <div class="col-6">
+                                <img id="galImg2" src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" class="gallery-img" alt="صورة معرض 2">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-5">
                     <div class="info-card">
-                        <h2 class="section-title">معلومات الفعالية</h2>
+                        <h2 class="section-title h4">معلومات الفعالية</h2>
                         <p>📅 <strong>التاريخ:</strong> <span id="eventDate">15 نوفمبر 2026</span></p>
                         <p>🕒 <strong>الوقت:</strong> <span id="eventTime">10:00 صباحاً - 02:00 ظهراً</span></p>
                         <p>📍 <strong>المكان:</strong> <span id="eventLoc">دمشق - المقر الرئيسي للجامعة الافتراضية</span></p>
-                        <p>🏷️ <strong>التصنيف:</strong> <span id="eventCat">ثقافة وتعليم</span></p>
+                        <p>🏷️ <strong>التصنيف:</strong> <span id="eventCat">ثقافي</span></p>
                         <hr>
-                        
+
                         <!-- الأزرار الثلاثة التفاعلية -->
-                        <div class="d-flex flex-wrap gap-2 mb-4 justify-content-center">
-                            <button class="btn btn-purple flex-fill py-2 fw-bold" id="btnBook">🎫 احجز مقعدك</button>
-                            <button class="btn btn-outline-primary flex-fill py-2" id="btnCalendar">📅 أضف للتقويم</button>
-                            <button class="btn btn-outline-secondary flex-fill py-2" id="btnShare">🔗 شارك</button>
+                        <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
+                            <button type="button" class="btn btn-purple flex-fill py-2 fw-bold" id="btnBook">🎫 احجز مقعدك</button>
+                            <button type="button" class="btn btn-outline-primary flex-fill py-2 fw-bold" id="btnCalendar">📅 أضف للتقويم</button>
+                            <button type="button" class="btn btn-outline-secondary flex-fill py-2 fw-bold" id="btnShare">🔗 شارك</button>
                         </div>
 
-                        <h3 class="section-title">موقع الفعالية</h3>
-                        <p id="eventLocDesc">تقام الفعالية في مدرج الجامعة الرئيسي مع خريطة ثابتة توضح المكان وسهولة الوصول.</p>
+                        <!-- صندوق رسائل التأكيد والتنبيه -->
+                        <div id="alertMessage" class="alert mt-3 mb-3" style="display: none;" role="alert"></div>
+
+                        <h3 class="section-title h5 mt-3">موقع الفعالية</h3>
+                        <p id="eventLocDesc" class="small">تُقام الفعالية في القاعة المركزية بالجامعة مع نقل مباشر عبر المنصة الرقمية.</p>
                         <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=600&q=80" class="map-image" alt="خريطة موقع الفعالية">
-                        
-                        <div id="alertMessage" class="alert mt-3" style="display: none;"></div>
                     </div>
                 </div>
             </div>
@@ -239,51 +290,57 @@
 
         <!-- فعاليات ذات صلة -->
         <section class="container pb-5">
-            <h2 class="section-title text-center">فعاليات ذات صلة</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
+<h2 class="section-title text-center mb-4">فعاليات ذات صلة</h2>
+            <div class="row g-4" id="relatedEventsContainer">
+                <div class="col-md-4">
                     <div class="info-card">
-                        <h3 class="h5">ورشة التعلم الرقمي</h3>
-                        <p>نشاط تعليمي للتعرف على أدوات التعلم الحديثة.</p>
+                        <h3 class="h5 section-title">ورشة التعلم الرقمي</h3>
+                        <p>نشاط تعليمي للتعرف على أدوات التعلم الحديثة واستخدامات الذكاء الاصطناعي.</p>
                         <a href="event.html?id=learning" class="btn btn-purple">عرض التفاصيل</a>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="info-card">
-                        <h3 class="h5">يوم النشاط الرياضي</h3>
-                        <p>فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون.</p>
+                        <h3 class="h5 section-title">يوم النشاط الرياضي</h3>
+                        <p>فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون وروح الفريق.</p>
                         <a href="event.html?id=sport" class="btn btn-purple">عرض التفاصيل</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h3 class="h5 section-title">مساحة المواهب الموسيقية</h3>
+                        <p>مساحة للطلاب لعرض مواهبهم الموسيقية والاستمتاع بالعروض الفنية.</p>
+                        <a href="event.html?id=music" class="btn btn-purple">عرض التفاصيل</a>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="events.html" class="btn btn-outline-secondary">عرض جميع الفعاليات</a>
+                <a href="events.html" class="btn btn-outline-secondary px-4">عرض جميع الفعاليات</a>
             </div>
         </section>
     </main>
 
-    <!-- Modal حجز مقعد -->
-    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold">🎫 حجز مقعد في الفعالية</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="bookingForm">
-                        <div class="mb-3">
-                            <label for="studentName" class="form-label fw-bold">الاسم الكامل للطالب</label>
-                            <input type="text" class="form-control" id="studentName" placeholder="أدخل اسمك الثلاثي" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="studentId" class="form-label fw-bold">الرقم الجامعي (SVU ID)</label>
-                            <input type="text" class="form-control" id="studentId" placeholder="مثال: student_123456" required>
-                        </div>
-                        <button type="submit" class="btn btn-purple w-100 py-2 mt-2 fw-bold">تأكيد الحجز</button>
-                    </form>
-                </div>
+    <!-- نافذة حجز المقعد (تعمل ذاتياً بدون الحاجة لمكتبة خارجية) -->
+    <div class="custom-modal-overlay" id="bookingModalOverlay">
+        <div class="custom-modal-box">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0" style="color: #7c3aed;">🎫 حجز مقعد في الفعالية</h5>
+                <button type="button" class="btn-close" id="closeModalBtn" aria-label="إغلاق"></button>
             </div>
+            <form id="bookingForm">
+                <div class="mb-3">
+                    <label for="studentName" class="form-label fw-bold">الاسم الكامل للطالب</label>
+                    <input type="text" class="form-control" id="studentName" placeholder="أدخل اسمك الثلاثي" required>
+                </div>
+                <div class="mb-3">
+                    <label for="studentId" class="form-label fw-bold">الرقم الجامعي (SVU ID)</label>
+                    <input type="text" class="form-control" id="studentId" placeholder="مثال: Malek_407636" required>
+                </div>
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-purple flex-fill py-2 fw-bold">تأكيد الحجز</button>
+                    <button type="button" class="btn btn-outline-secondary py-2" id="cancelModalBtn">إلغاء</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -298,24 +355,21 @@
         <p class="mb-0 small"><a href="mailto:events@svuonline.org">events@svuonline.org</a> ✉</p>
     </footer>
 
-    <button class="scroll-top-btn" id="scrollTopBtn" title="العودة للأعلى">↑</button>
+    <button class="scroll-top-btn" id="scrollTopBtn" type="button" title="العودة للأعلى">↑</button>
 
-    <!-- Bootstrap Bundle JS (يشمل Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Script التشغيل المضمون -->
+    <!-- كود التشغيل الفوري والمضمون لجميع الفعاليات والأزرار والمعرض -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            
+        (function () {
+            // قاعدة بيانات الفعاليات الخمس
             const eventsData = {
                 "knowledge": {
                     title: "ملتقى المعرفة والإبداع",
                     category: "ثقافي",
-                    sub: "لقاء يجمع الطلاب لتبادل الأفكار والخبرات واكتشاف اهتمامات جديدة.",
+sub: "لقاء يجمع الطلاب لتبادل الأفكار والخبرات واكتشاف اهتمامات جديدة.",
                     image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80",
                     gallery: [
-                        "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=80"
+                        "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80"
                     ],
                     desc1: "يهدف ملتقى المعرفة والإبداع إلى توفير مساحة تفاعلية للطلاب لتبادل الأفكار ومشاركة التجارب والتعرف على اهتمامات جديدة في مجالات العلم والثقافة.",
                     desc2: "تتضمن الفعالية جلسات حوارية ونقاشات مفيدة وفرصاً ممتازة لبناء شبكة علاقات علمية وثقافية مع بقية الطلاب.",
@@ -331,8 +385,8 @@
                     sub: "نشاط تعليمي للتعرف على أدوات التعلم الحديثة واستخدامات الذكاء الاصطناعي.",
                     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
                     gallery: [
-                        "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80"
+                        "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80"
                     ],
                     desc1: "تستعرض هذه الورشة أحدث التقنيات الرقمية المتاحة لطلاب الجامعة الافتراضية وكيفية الاستفادة منها في تنظيم الوقت والبحث العلمي.",
                     desc2: "سيتم تطبيق أدوات عمليّة واستراتيجيات حديثة لتسهيل التعلم الذاتي عن بُعد وتحسين جودة الإنتاج الأكاديمي.",
@@ -348,15 +402,15 @@
                     sub: "فعالية تشجع على الحركة والنشاط البدني وتعزز التعاون وروح الفريق.",
                     image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
                     gallery: [
-                        "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=500&q=80"
+                        "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=600&q=80"
                     ],
                     desc1: "يوم رياضي مفتوح لجميع الطلاب يتضمن مباريات كرة قدم، كرة سلة، ومسابقات لياقة بدنية متنوعة.",
                     desc2: "يهدف اليوم إلى الخروج من أجواء الدراسة والضغط النفسي وتوطيد العلاقات الاجتماعية بين الطلاب في بيئة حيوية وممتعة.",
                     goals: ["تعزيز الصحة البدنية واللياقة.", "تنمية روح الفريق والمنافسة الشريفة.", "تخفيف ضغوط الدراسة.", "توسيع شريحة التعارف بين الكليات."],
                     date: "28 نوفمبر 2026",
                     time: "09:00 صباحاً - 04:00 عصراً",
-                    location: "الملعب الجامعي المركزي",
+location: "الملعب الجامعي المركزي",
                     locDesc: "تقام جميع الفعاليات والمباريات في الملاعب الرياضية المفتوحة التابعة للجامعة."
                 },
                 "music": {
@@ -365,8 +419,8 @@
                     sub: "مساحة للطلاب لعرض مواهبهم الموسيقية والاستمتاع بالعروض الفنية.",
                     image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80",
                     gallery: [
-                        "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=500&q=80"
+                        "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80"
                     ],
                     desc1: "أمسية فنية تجمع أصحاب المواهب في العزف والغناء الشرقي والغربي لتقديم فقرات متميزة أمام زملائهم.",
                     desc2: "فرصة رائعة للتعبير عن الذات واكتشاف النغمات والأنماط الموسيقية المختلفة في أجواء ملهمة ومبدعة.",
@@ -382,8 +436,8 @@
                     sub: "فعالية اجتماعية تجمع العائلات في أجواء من المرح والتواصل.",
                     image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80",
                     gallery: [
-                        "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=500&q=80"
+                        "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80",
+                        "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=600&q=80"
                     ],
                     desc1: "ملتقى عائلي سنوي يهدف لدمج أهالي وعائلات الطلاب مع الكادر الجامعي ضمن أنشطة مسلية وألعاب تفاعلية.",
                     desc2: "يتضمن البرنامج فقرات للأطفال، ألعاب خفيفة، ومساحات مفتوحة للتعارف وتناول الوجبات الخفيفة.",
@@ -395,104 +449,121 @@
                 }
             };
 
-            // قراءة id الفعالية من رابط URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const eventId = urlParams.get('id') || 'knowledge';
-            const data = eventsData[eventId] || eventsData["knowledge"];
+            // استخراج معرف الفعالية من الرابط (مثلاً ?id=sport)
+            const params = new URLSearchParams(window.location.search);
+            const rawId = (params.get("id") || "knowledge").trim().toLowerCase();
+            const currentEvent = eventsData[rawId] || eventsData["knowledge"];
 
-            // تحديث محتوى الصفحة بالكامل بناء على الفعالية
-            document.getElementById("eventTitle").textContent = data.title;
-            document.getElementById("eventBadge").textContent = data.category;
-            document.getElementById("eventSub").textContent = data.sub;
-            document.getElementById("eventHeaderLoc").textContent = data.location;
-            document.getElementById("eventImg").src = data.image;
-            document.getElementById("eventDesc1").textContent = data.desc1;
-            document.getElementById("eventDesc2").textContent = data.desc2;
-            document.getElementById("eventDate").textContent = data.date;
-            document.getElementById("eventTime").textContent = data.time;
-            document.getElementById("eventLoc").textContent = data.location;
-            document.getElementById("eventCat").textContent = data.category;
-            document.getElementById("eventLocDesc").textContent = data.locDesc;
+            // تحديث نصوص وصور الصفحة
+            document.title = currentEvent.title + " | دليل فعاليات SVU";
+            document.getElementById("eventTitle").textContent = currentEvent.title;
+            document.getElementById("eventBadge").textContent = currentEvent.category;
+            document.getElementById("eventSub").textContent = currentEvent.sub;
+            document.getElementById("eventHeaderLoc").textContent = currentEvent.location;
+            document.getElementById("eventImg").src = currentEvent.image;
+            document.getElementById("eventDesc1").textContent = currentEvent.desc1;
+            document.getElementById("eventDesc2").textContent = currentEvent.desc2;
+document.getElementById("eventDate").textContent = currentEvent.date;
+            document.getElementById("eventTime").textContent = currentEvent.time;
+            document.getElementById("eventLoc").textContent = currentEvent.location;
+            document.getElementById("eventCat").textContent = currentEvent.category;
+            document.getElementById("eventLocDesc").textContent = currentEvent.locDesc;
 
-            // تحديث الأهداف
-            const goalsList = document.getElementById("eventGoals");
-            goalsList.innerHTML = "";
-            data.goals.forEach(goal => {
+            // تحديث قائمة الأهداف
+            const goalsEl = document.getElementById("eventGoals");
+            goalsEl.innerHTML = "";
+            currentEvent.goals.forEach(function (g) {
                 const li = document.createElement("li");
-                li.textContent = goal;
-                goalsList.appendChild(li);
+                li.textContent = g;
+                goalsEl.appendChild(li);
             });
 
-            // تحديث المعرض
-            const galleryContainer = document.getElementById("eventGallery");
-            galleryContainer.innerHTML = "";
-            data.gallery.forEach((imgUrl, idx) => {
-                const col = document.createElement("div");
-                col.className = "col-6";
-                col.innerHTML = `<img src="${imgUrl}" class="gallery-img" alt="معرض ${idx + 1}">`;
-                galleryContainer.appendChild(col);
-            });
+            // تحديث صور المعرض مباشرة
+            document.getElementById("galImg1").src = currentEvent.gallery[0];
+            document.getElementById("galImg2").src = currentEvent.gallery[1];
 
-            // 1. زر الوضع المظلم
-            const darkModeToggle = document.getElementById("darkModeToggle");
-            if (localStorage.getItem("darkMode") === "enabled") {
-                document.body.classList.add("dark-mode");
-                darkModeToggle.textContent = "☀️";
-            }
-            darkModeToggle.addEventListener("click", function() {
-                document.body.classList.toggle("dark-mode");
-                const isDark = document.body.classList.contains("dark-mode");
-                localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-                darkModeToggle.textContent = isDark ? "☀️" : "🌙";
-            });
-
-            // 2. زر العودة للأعلى
-            document.getElementById("scrollTopBtn").addEventListener("click", function() {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            });
-
-            // دالة إظهار التنبيهات
-            function showAlert(text, type) {
+            // دالة إظهار رسالة التنبيه الخضراء أو الزرقاء
+            function showAlert(msg, type) {
                 const alertBox = document.getElementById("alertMessage");
-                alertBox.textContent = text;
-                alertBox.className = "alert alert-" + type + " mt-3";
+                alertBox.className = "alert alert-" + type + " mt-3 mb-3 fw-bold";
+                alertBox.textContent = msg;
                 alertBox.style.display = "block";
             }
 
-            // 3. زر "احجز مقعدك" النافذة المنبثقة
-            const bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-            document.getElementById("btnBook").addEventListener("click", function() {
-                bookingModal.show();
+            // 1. تشغيل نافذة "احجز مقعدك"
+            const modalOverlay = document.getElementById("bookingModalOverlay");
+            const btnBook = document.getElementById("btnBook");
+            const closeModalBtn = document.getElementById("closeModalBtn");
+            const cancelModalBtn = document.getElementById("cancelModalBtn");
+            const bookingForm = document.getElementById("bookingForm");
+
+            btnBook.addEventListener("click", function () {
+                modalOverlay.classList.add("show");
             });
 
-            document.getElementById("bookingForm").addEventListener("submit", function(e) {
+            function closeBookingModal() {
+                modalOverlay.classList.remove("show");
+            }
+
+            closeModalBtn.addEventListener("click", closeBookingModal);
+            cancelModalBtn.addEventListener("click", closeBookingModal);
+            modalOverlay.addEventListener("click", function (e) {
+                if (e.target === modalOverlay) closeBookingModal();
+            });
+
+            bookingForm.addEventListener("submit", function (e) {
                 e.preventDefault();
-                bookingModal.hide();
-                showAlert("تم تأكيد حجز مقعدك بنجاح! سيصلك التأكيد إلى بريدك الجامعي.", "success");
+                const sName = document.getElementById("studentName").value.trim();
+                closeBookingModal();
+                bookingForm.reset();
+                showAlert("✅ تم تأكيد حجز مقعدك بنجاح يا " + sName + " في (" + currentEvent.title + ")!", "success");
             });
 
-            // 4. زر "أضف للتقويم"
-            document.getElementById("btnCalendar").addEventListener("click", function() {
-                const calText = `${data.title}\nالتاريخ: ${data.date}\nالوقت: ${data.time}\nالمكان: ${data.location}`;
-                const blob = new Blob([calText], { type: "text/plain;charset=utf-8" });
-                const a = document.createElement("a");
-                a.href = URL.createObjectURL(blob);
-                a.download = `${eventId}-event.txt`;
-                a.click();
-                showAlert("تم تحميل معلومات الفعالية لإضافتها إلى تقويمك.", "info");
+            // 2. تشغيل زر "أضف للتقويم"
+            document.getElementById("btnCalendar").addEventListener("click", function () {
+                const calContent = "الفعالية: " + currentEvent.title + "\nالتاريخ: " + currentEvent.date + "\nالوقت: " + currentEvent.time + "\nالمكان: " + currentEvent.location;
+                const blob = new Blob([calContent], { type: "text/plain;charset=utf-8" });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = rawId + "-calendar.txt";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showAlert("📅 تم تحميل ملف تذكير الفعالية لإضافته إلى تقويمك.", "info");
             });
 
-            // 5. زر "شارك"
-            document.getElementById("btnShare").addEventListener("click", function() {
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(window.location.href);
-                    showAlert("تم نسخ رابط الفعالية بنجاح!", "success");
+            // 3. تشغيل زر "شارك"
+            document.getElementById("btnShare").addEventListener("click", function () {
+                const url = window.location.href;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(function () {
+showAlert("🔗 تم نسخ رابط الفعالية إلى الحافظة بنجاح!", "success");
+                    }).catch(function () {
+                        showAlert("🔗 رابط الفعالية: " + url, "info");
+                    });
                 } else {
-                    showAlert("رابط الفعالية: " + window.location.href, "info");
+                    showAlert("🔗 رابط الفعالية: " + url, "info");
                 }
             });
 
-        });
+            // 4. تشغيل زر الوضع الليلي وزر الصعود للأعلى
+            const darkBtn = document.getElementById("darkModeToggle");
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+                darkBtn.textContent = "☀️";
+            }
+            darkBtn.addEventListener("click", function () {
+                document.body.classList.toggle("dark-mode");
+                const isDark = document.body.classList.contains("dark-mode");
+                localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+                darkBtn.textContent = isDark ? "☀️" : "🌙";
+            });
+
+            document.getElementById("scrollTopBtn").addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        })();
     </script>
 </body>
+
 </html>
