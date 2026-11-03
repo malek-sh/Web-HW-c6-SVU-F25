@@ -7,13 +7,14 @@
     <title>كل الفعاليات | دليل فعاليات الجامعة الافتراضية السورية</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Linking the external format file -->
+
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
-    <!-- رأس الصفحة وشريط التنقل -->
-    <header>
+        <header>
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <a href="index.html" class="logo"><img src="assets/img/svu-logo.png" alt="شعار الجامعة الافتراضية السورية" class="university-logo"> دليل الفعاليات الجامعية</a>
@@ -37,7 +38,7 @@
             <p class="text-muted">ابحث وفلتر الفعاليات حسب الاسم، التصنيف، التاريخ، أو الموقع.</p>
         </div>
 
-        <!-- شريط أدوات البحث والفلترة (شاملاً التاريخ والتصنيف والموقع) -->
+        <!-- Search and filter toolbar (including date, category, and location) -->
         <section class="filter-box mb-5">
             <div class="row g-3">
                 <div class="col-md-3">
@@ -77,10 +78,10 @@
             </div>
         </section>
 
-        <!-- شبكة كروت الفعاليات -->
+        <!--  Event Card Network -->
         <section>
             <div class="row g-4" id="eventsContainer">
-<!-- 1. ملتقى المعرفة والإبداع -->
+<!-- Knowledge and Creativity Forum-->
                 <div class="col-md-6 col-lg-4 event-item" data-title="ملتقى المعرفة والإبداع" data-category="ثقافي" data-date="2026-11-15" data-location="دمشق - المقر الرئيسي">
                     <div class="card event-card">
                         <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80" class="event-image" alt="ملتقى المعرفة والإبداع">
@@ -95,7 +96,7 @@
                     </div>
                 </div>
 
-                <!-- 2. ورشة التعلم الرقمي -->
+                <!-- 2.Digital Learning Workshop -->
                 <div class="col-md-6 col-lg-4 event-item" data-title="ورشة التعلم الرقمي" data-category="تعليمي" data-date="2026-11-20" data-location="عبر الإنترنت">
                     <div class="card event-card">
                         <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" class="event-image" alt="ورشة التعلم الرقمي">
@@ -110,7 +111,7 @@
                     </div>
                 </div>
 
-                <!-- 3. يوم النشاط الرياضي -->
+                <!-- 3. Sports Activity Day -->
                 <div class="col-md-6 col-lg-4 event-item" data-title="يوم النشاط الرياضي" data-category="رياضي" data-date="2026-11-28" data-location="الملعب الجامعي المركزي">
                     <div class="card event-card">
                         <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80" class="event-image" alt="يوم النشاط الرياضي">
@@ -125,7 +126,7 @@
                     </div>
                 </div>
 
-                <!-- 4. مساحة المواهب الموسيقية -->
+                <!-- 4. Musical Talent Space -->
                 <div class="col-md-6 col-lg-4 event-item" data-title="مساحة المواهب الموسيقية" data-category="فني" data-date="2026-12-05" data-location="مسرح الجامعة الكبير">
                     <div class="card event-card">
 <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" class="event-image" alt="مساحة المواهب الموسيقية">
@@ -140,7 +141,7 @@
                     </div>
                 </div>
 
-                <!-- 5. اليوم العائلي الترفيهي -->
+                <!-- 5.Family Fun Day -->
                 <div class="col-md-6 col-lg-4 event-item" data-title="اليوم العائلي الترفيهي" data-category="ترفيهي" data-date="2026-12-12" data-location="حديقة الجامعة">
                     <div class="card event-card">
                         <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" class="event-image" alt="اليوم العائلي الترفيهي">
@@ -163,16 +164,26 @@
         </section>
     </main>
 
-    <!-- التذييل -->
-    <footer>
-        <h5 class="fw-bold mb-2">🎓 دليل فعاليات الجامعة الافتراضية السورية</h5>
+      <footer>
+
+        <h5 class="fw-bold mb-2">
+            <img src="assets/img/svu-logo.png" alt="شعار الجامعة الافتراضية السورية" class="university-logo"> 
+            <a href="https://www.svuonline.org" target="_blank" class="text-white text-decoration-none">دليل فعاليات الجامعة الافتراضية السورية</a>
+        </h5>
         <p class="small text-white-50 mb-3">جميع الحقوق محفوظة © 2026 - مشروع مقرر BWP401</p>
+        
         <div class="social-icons mb-3">
-            <a href="#" title="LinkedIn">in</a>
-            <a href="#" title="Telegram">✈</a>
-            <a href="#" title="Facebook">f</a>
+            <!-- Facebook link -->
+            <a href="https://www.facebook.com/share/1A3LEut4jt/" target="_blank" title="Facebook">f</a>
+            
+            <!--  SVUIS link  -->
+            <a href="http://svuis.svuonline.org" target="_blank" title="SVUIS Services">🌐</a>
+            
+            <!-- linkedin link -->
+            <a href="https://www.linkedin.com/company/syrianvirtualuniversity" target="_blank" title="LinkedIn">in</a>
         </div>
-        <p class="mb-0 small"><a href="mailto:events@svuonline.org">events@svuonline.org</a> ✉</p>
+        
+      <p class="mb-0 small"><a href="https://www.svuonline.org" target="_blank" class="text-white text-decoration-none">www.svuonline.org</a> 🌐</p>
     </footer>
 
     <button class="scroll-top-btn" id="scrollTopBtn" title="العودة للأعلى">↑</button>
@@ -180,7 +191,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- سكربت الفلترة المتقدمة (الاسم، التصنيف، التاريخ، المكان) -->
+    <!-- Advanced filtering script (name, category, date and location)) -->
     <script>
         const searchInput = document.getElementById("searchInput");
         const categoryFilter = document.getElementById("categoryFilter");
